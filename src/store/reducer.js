@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
 
-import HeaderReduce from '../common/header/store'
+import {reduce as HeaderReduce} from '../common/header/store'
 const reduce = combineReducers({
   header:HeaderReduce
 })

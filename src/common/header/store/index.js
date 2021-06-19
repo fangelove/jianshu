@@ -1,3 +1,6 @@
 import reduce from './reducer'
+import * as actionCreates from './actionCreates'
 
- export default reduce
+import * as constant from './constant'
+
+ export {reduce,actionCreates,constant}
