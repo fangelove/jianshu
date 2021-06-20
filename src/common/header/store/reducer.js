@@ -1,21 +1,21 @@
 import {constant} from './index'
+import {fromJS} from 'immutable'
 
-const defaultState = {
+//把一个js对象转换成immutable对象
+const defaultState = fromJS({
   focused:false
-}
+})
 
 
 const reducer =  (state=defaultState,action)=> {
   if(action.type === constant.HEADER_SEARCH_ONFOCUS){
-    return {
-      focused:true
-    }
+    //immutable对象的set方法，会结合之前immutable对象的值
+    //和设置的值，返回一个全新的对象
+    return state.set('focused',true)
 
   }
   if(action.type === constant.HEADER_SEARCH_ONBLUR){
-    return {
-      focused:false
-    }
+    return state.set('focused',false)
 
   }
 
