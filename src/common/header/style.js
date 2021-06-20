@@ -45,6 +45,40 @@ export const NavItem = styled.div`
   }
 
 `
+export const SearchInfo = styled.div`
+  position:absolute;
+  left:0;
+  top:60px;
+  width:250px;
+  height:100px;
+  padding:20px;
+  box-shadow:0 0 8px rgba(0,0,0,.2);
+
+`
+export const SearchInfoSwitch = styled.span`
+  float:right;
+  font-size:13px;
+`
+export const SearchInfoItem = styled.a`
+  display:block;
+  line-height:20px;
+  color:#787878;
+  border:1px solid #ddd;
+  border-radius:3px;
+  font-size:12px;
+  padding: 0 5px;
+  float:left;
+  margin-right:10px;
+  margin-bottom:15px;
+`
+export const SearchInfoTitle = styled.div`
+  margin-top:0px;
+  margin-bottom:15px;
+  line-height:20px;
+  font-size:14px;
+  color:#969696;
+
+`
 export const SearchWrapper =  styled.div`
   float:left;
   position:relative;
