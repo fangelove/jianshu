@@ -11,7 +11,8 @@ import {HeaderWrapper,
       SearchInfo,
       SearchInfoTitle,
       SearchInfoSwitch,
-      SearchInfoItem} from './style'
+      SearchInfoItem,
+      SearchInfoTriangle} from './style'
 import { connect } from 'react-redux'
 import {actionCreates} from './store'
 
@@ -34,7 +35,9 @@ class Header extends Component {
     }
     if(focused || mouseIn){
       return (
+
         <SearchInfo onMouseEnter = {handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <SearchInfoTriangle></SearchInfoTriangle>
         <SearchInfoTitle>
           热门搜索
           <SearchInfoSwitch onClick={()=>handleChangeList(page,totalPage,this.iconSpin)}><i className='iconfont zoom' ref={(icon)=> this.iconSpin = icon}>&#xe851;</i>换一换</SearchInfoSwitch>
@@ -56,14 +59,14 @@ class Header extends Component {
 
   }
   render(){
-    const {focused,handleInputFocus,handleInputBlur} = this.props
+    const {focused,handleInputFocus,handleInputBlur,list} = this.props
     return (
       <HeaderWrapper>
         <Logo href='/'/>
         <Nav>
           <NavItem className='left active'>首页</NavItem>
           <NavItem className='left'>下载App</NavItem>
-          <SearchWrapper onFocus={handleInputFocus} onBlur={handleInputBlur}>
+          <SearchWrapper onFocus={()=>handleInputFocus(list)} onBlur={handleInputBlur}>
             <CSSTransition in={focused} timeout={2000} classNames='slide'>
               <NavSearch className={focused ? 'focused' : ''}></NavSearch>
           </CSSTransition>
@@ -109,8 +112,12 @@ const mapStateToProps = (state)=> {
 
 const mapDispatchToProps = (dispatch)=> {
   return {
-    handleInputFocus(){
+    handleInputFocus(list){
+      if(list.size === 0){
       dispatch(actionCreates.getList())
+
+
+      }
 
       dispatch(actionCreates.focusSearch())
 

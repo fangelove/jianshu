@@ -48,15 +48,32 @@ export const NavItem = styled.div`
 export const SearchInfo = styled.div`
   position:absolute;
   left:0;
-  top:60px;
+  top:64px;
   width:250px;
   padding:20px;
   box-shadow:0 0 8px rgba(0,0,0,.2);
 
 `
+export const SearchInfoTriangle = styled.div`
+  width:0;
+  height:0;
+  position:absolute;
+  top:-20px;
+  filter: drop-shadow(0 -2px 4px rgba(0, 0, 0, .2));
+  border: 10px solid #fff;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-left: 10px solid transparent;
+
+`
 export const SearchInfoSwitch = styled.span`
   float:right;
   font-size:13px;
+  cursor:pointer;
+  &:hover {
+    color:#333;
+
+  }
   .zoom {
     margin-right:5px;
     font-size:12px;
@@ -64,7 +81,6 @@ export const SearchInfoSwitch = styled.span`
     transition:all .2s ease-in;
     display:inline-block;
     transform-origin:center center;
-
 
   }
 `
