@@ -57,6 +57,16 @@ export const SearchInfo = styled.div`
 export const SearchInfoSwitch = styled.span`
   float:right;
   font-size:13px;
+  .zoom {
+    margin-right:5px;
+    font-size:12px;
+    position:static!important;
+    transition:all .2s ease-in;
+    display:inline-block;
+    transform-origin:center center;
+
+
+  }
 `
 export const SearchInfoItem = styled.a`
   display:block;
