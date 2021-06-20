@@ -1,3 +1,6 @@
 export const HEADER_SEARCH_ONFOCUS = 'header/focus-search'
 export const HEADER_SEARCH_ONBLUR = 'header/blur-search'
 export const CHANGE_LIST = 'header/change_list'
+export const HEADER_MOUSE_ENTER = 'header/mouse_enter'
+export const HEADER_MOUSE_LEAVE = 'header/mouse_leave'
+export const HEADER_CHANGE_PAGE = 'header/page_change'

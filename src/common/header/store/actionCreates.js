@@ -5,7 +5,8 @@ import { fromJS } from 'immutable'
 const changeList = (data)=> {
   return {
     type:constant.CHANGE_LIST,
-    data:fromJS(data)//在reduce.js中收使用fromJs对象把state变成了immutable，所以list数组也要变成immutable
+    data:fromJS(data),//在reduce.js中收使用fromJs对象把state变成了immutable，所以list数组也要变成immutable
+    totalPage:Math.ceil(data.length / 10)
   }
 }
 export const focusSearch =  ()=> {
@@ -19,6 +20,24 @@ export const onBlurSearch =  ()=> {
     type:constant.HEADER_SEARCH_ONBLUR
   }
 }
+export const mouseEnter =  ()=> {
+  return {
+    type:constant.HEADER_MOUSE_ENTER
+  }
+}
+export const mouseLeave =  ()=> {
+  return {
+    type:constant.HEADER_MOUSE_LEAVE
+  }
+}
+export const changePageList =  (page)=> {
+  return {
+    type:constant.HEADER_CHANGE_PAGE,
+    page
+  }
+}
+
+
 
 
 //redux-thunk 返回一个函数

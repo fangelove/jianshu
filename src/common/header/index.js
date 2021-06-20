@@ -17,23 +17,31 @@ import {actionCreates} from './store'
 
 class Header extends Component {
   getInfoList(){
-    const {focused,list} = this.props
-    if(focused){
+    const {focused,list,page,mouseIn,totalPage,handleMouseEnter,handleMouseLeave,handleChangeList} = this.props
+    const jsList = list.toJS();//可以把immutable的对象装换成普通对象
+    const pageList = []
+    //if语句解决最后一次不满足10个，如果没有值，就不用push到数组
+    if(jsList.length){
+      for (let index = (page - 1) * 10; index < page * 10; index++) {
+        if(jsList[index]){
+        pageList.push( <SearchInfoItem key={jsList[index]}>{jsList[index]}</SearchInfoItem>)
+
+
+        }
+
+    }
+
+    }
+    if(focused || mouseIn){
       return (
-        <SearchInfo>
+        <SearchInfo onMouseEnter = {handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <SearchInfoTitle>
           热门搜索
-          <SearchInfoSwitch>换一换</SearchInfoSwitch>
+          <SearchInfoSwitch onClick={()=>handleChangeList(page,totalPage)}>换一换</SearchInfoSwitch>
         </SearchInfoTitle>
         <>
         {
-          list.map((item,index)=>{
-            return(
-              <SearchInfoItem key={index}>{item}</SearchInfoItem>
-            )
-
-
-          })
+          pageList
         }
 
 
@@ -89,7 +97,10 @@ const mapStateToProps = (state)=> {
     // focused:state.get('header').get('focused')
     //相当于：
     focused:state.getIn(['header','focused']),
-    list:state.getIn(['header','list'])
+    list:state.getIn(['header','list']),
+    page:state.getIn(['header','page']),
+    totalPage:state.getIn(['header','totalPage']),
+    mouseIn:state.getIn(['header','mouseIn']),
 
 
   }
@@ -112,7 +123,26 @@ const mapDispatchToProps = (dispatch)=> {
 
 
 
+    },
+    handleMouseEnter(){
+      dispatch(actionCreates.mouseEnter())
+
+    },
+    handleMouseLeave(){
+      dispatch(actionCreates.mouseLeave())
+
+    },
+    handleChangeList(page,totalPage){
+      if(page < totalPage){
+        dispatch(actionCreates.changePageList(page + 1))
+
+      }else {
+        dispatch(actionCreates.changePageList(1))
+      }
+
+
     }
+
   }
 
 }

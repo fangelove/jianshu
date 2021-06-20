@@ -50,7 +50,6 @@ export const SearchInfo = styled.div`
   left:0;
   top:60px;
   width:250px;
-  height:100px;
   padding:20px;
   box-shadow:0 0 8px rgba(0,0,0,.2);
 
