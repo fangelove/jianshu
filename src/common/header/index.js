@@ -17,7 +17,8 @@ import {actionCreates} from './store'
 
 class Header extends Component {
   getInfoList(){
-    if(this.props.focused){
+    const {focused,list} = this.props
+    if(focused){
       return (
         <SearchInfo>
         <SearchInfoTitle>
@@ -26,7 +27,7 @@ class Header extends Component {
         </SearchInfoTitle>
         <>
         {
-          this.props.list.map((item,index)=>{
+          list.map((item,index)=>{
             return(
               <SearchInfoItem key={index}>{item}</SearchInfoItem>
             )
@@ -47,17 +48,18 @@ class Header extends Component {
 
   }
   render(){
+    const {focused,handleInputFocus,handleInputBlur} = this.props
     return (
       <HeaderWrapper>
         <Logo href='/'/>
         <Nav>
           <NavItem className='left active'>首页</NavItem>
           <NavItem className='left'>下载App</NavItem>
-          <SearchWrapper onFocus={this.props.handleInputFocus} onBlur={this.props.handleInputBlur}>
-            <CSSTransition in={this.props.focused} timeout={2000} classNames='slide'>
-              <NavSearch className={this.props.focused ? 'focused' : ''}></NavSearch>
+          <SearchWrapper onFocus={handleInputFocus} onBlur={handleInputBlur}>
+            <CSSTransition in={focused} timeout={2000} classNames='slide'>
+              <NavSearch className={focused ? 'focused' : ''}></NavSearch>
           </CSSTransition>
-          <i className={this.props.focused ? ' iconfont iconfontActive' : 'iconfont'}>&#xe6e4;</i>
+          <i className={focused ? ' iconfont iconfontActive' : 'iconfont'}>&#xe6e4;</i>
         {this.getInfoList()}
           </SearchWrapper>
           <NavItem className='right'>
