@@ -5,13 +5,13 @@ import {HomeWrapper,
 
 
 } from './style'
-import axios from 'axios'
 import {connect} from 'react-redux'
 import banner from '../../statics/banner.jpeg'
 import Topic  from './components/Topic'
 import Recommend  from './components/Recommend'
 import List  from './components/List'
 import Writer  from './components/Writer'
+import {actionCreate} from './store'
 
 class Home extends Component {
   render(){
@@ -33,28 +33,18 @@ class Home extends Component {
   }
 
   componentDidMount(){
-    const {changeHomeData} = this.props
-    axios.get('/api/home.json').then((res)=> {
-      const result = res.data.data;
-      //拿到值了，派发一个action去改store的值
-      const action  = {
-        type:'change_home_data',
-        todoList:result.todoList,
-        recommendList:result.recommendList,
-        articleList :result.articleList
-      }
-      changeHomeData(action)
+    this.props.changeHomeData()
 
-    }).catch(()=> {
-      console.log('error');
-    })
 
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  changeHomeData(action){
-    dispatch(action)
+
+
+  changeHomeData(){
+    dispatch(actionCreate.getHomeInfo())
+
 
   }
 })
