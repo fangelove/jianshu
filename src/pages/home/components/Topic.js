@@ -6,6 +6,7 @@ import {TopicWrapper,TopicItem} from '../style'
 class Topic extends Component {
 
   render(){
+
     const {list} = this.props
     return(
       <TopicWrapper>
@@ -28,8 +29,8 @@ class Topic extends Component {
 }
 const mapStateToProps = (state)=> {
   return {
-    // list:state.get('home').get('topList')
-    list:state.getIn(['home','topList'])
+    // list:state.get('home').get('todoList')
+    list:state.getIn(['home','todoList'])
   }
 }
 
