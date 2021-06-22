@@ -32,7 +32,6 @@ export const getMoreInfo = (page)=> {
   return (dispatch)=> {
     axios.get('/api/homeMoreList.json?page=' + page).then((res)=> {
       const result = res.data.data;
-      console.log(res);
       //拿到值了，派发一个action去改store的值
       const action  = addHomeData(result,page+1)
       dispatch(action)
@@ -42,3 +41,8 @@ export const getMoreInfo = (page)=> {
 
   }
 }
+
+export const toggleScroll = (show)=> ({
+  type:constant.TOGGLE_CHANGE,
+  show
+})
