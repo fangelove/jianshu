@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React,{PureComponent} from 'react'
 import {HomeWrapper,
         HomeLeft,
         HomeRight,
@@ -14,7 +14,7 @@ import List  from './components/List'
 import Writer  from './components/Writer'
 import {actionCreate} from './store'
 
-class Home extends Component {
+class Home extends PureComponent {
   handleToTop(){
     window.scrollTo(0,0)
   }

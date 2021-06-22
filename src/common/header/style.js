@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.div`
  display:flex
 `
 
-export const Logo = styled.a`
+export const Logo = styled.div`
   display:block;
   height:56px;
   width:100px;
