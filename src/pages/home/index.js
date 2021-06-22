@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import {HomeWrapper,
         HomeLeft,
-        HomeRight
+        HomeRight,
 
 
 } from './style'
@@ -21,6 +21,7 @@ class Home extends Component {
           <img alt ='banner' src={banner} className='banner-img'/>
           <Topic/>
           <List/>
+
         </HomeLeft>
         <HomeRight>
           <Recommend/>
@@ -46,7 +47,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(actionCreate.getHomeInfo())
 
 
-  }
+  },
+
 })
 
 export default connect(null,mapDispatchToProps)(Home)

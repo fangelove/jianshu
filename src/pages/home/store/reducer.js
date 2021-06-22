@@ -16,7 +16,9 @@ const defaultState = fromJS({
   recommendList:[
 
 
-  ]
+  ],
+  moreList:[],
+  articlePage:1
 
 })
 
@@ -29,6 +31,11 @@ const reducer = (state = defaultState, action) => {
         articleList:fromJS(action.articleList),
         recommendList:fromJS(action.recommendList)
       })
+      case constant.CHANGE_MORE_LIST:
+        return state.merge({
+          'articleList':state.get('articleList').concat(action.list),
+          'articlePage':action.nextPage
+        })
 
     default:
       return state

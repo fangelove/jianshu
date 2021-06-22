@@ -1,16 +1,17 @@
 import React,{Component} from 'react'
-import {ListItem,ListInfo} from '../style'
+import {ListItem,ListInfo,MoreButton} from '../style'
 import {connect} from 'react-redux'
+import {actionCreate} from '../store'
 
 class List extends Component {
   render(){
-    const {list} = this.props
+    const {list,page,handleMore} = this.props
     return(
     <>
     {
-      list.map(item=> {
+      list.map((item,index)=> {
         return (
-          <ListItem key={item.get('id')}>
+          <ListItem key={index}>
           <img  className='pic' alt='' src={item.get('picUrl')}/>
           <ListInfo>
             <h3 className='title'>{item.get('title')}</h3>
@@ -20,6 +21,7 @@ class List extends Component {
         )
       })
     }
+    <MoreButton onClick={()=>handleMore(page)}>阅读更多</MoreButton>
 
 
     </>
@@ -29,11 +31,16 @@ class List extends Component {
 
 const mapStateToProps = (state)=> {
   return {
-    list:state.get('home').get('articleList')
+    list:state.get('home').get('articleList'),
+    page:state.getIn(['home','articlePage'])
   }
 }
 const mapDispatchToProps = (dispatch)=> {
   return {
+    handleMore(page){
+      dispatch(actionCreate.getMoreInfo(page))
+
+    }
 
   }
 

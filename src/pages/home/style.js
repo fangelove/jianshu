@@ -20,6 +20,22 @@ export const HomeRight = styled.div`
   width: 280px;
   float:right;
 `
+
+export const MoreButton = styled.div`
+    width: 100%;
+    border-radius: 20px;
+    background-color: #a5a5a5;
+    height: 40px;
+    line-height:40px;
+    margin: 30px auto 60px;
+    padding: 0 15px;
+    text-align: center;
+    font-size: 15px;
+    color:#fff;
+    cursor:pointer;
+
+
+`
 export const TopicWrapper = styled.div`
     padding:20px 0 10px 0;
     overflow:hidden;
